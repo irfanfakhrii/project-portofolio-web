@@ -21,8 +21,41 @@ animate(chars2, {
 });
 
 /*=============== SWIPER PROJECTS ===============*/
+const swiperProjects = new Swiper(".projects__swiper", {
+  loop: true,
+  spaceBetween: 24,
+  slidesPerView: "auto",
+  grabCursor: true,
+  speed: 600,
 
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+});
 /*=============== WORK TABS ===============*/
+const tabs = document.querySelectorAll("[data-target]");
+tabContents = document.querySelectorAll("[data-content]");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const targetSelector = tab.dataset.target,
+      targetContent = document.querySelector(targetSelector);
+
+    // disable all content and active tabs
+    tabContents.forEach((content) => content.classList.remove("work-active"));
+    tabs.forEach((t) => t.classList.remove("work-active"));
+
+    // active the tab and corresponding content
+    tab.classList.add("work-active");
+    targetContent.classList.add("work-active");
+  });
+});
 
 /*=============== SERVICES ACCORDION ===============*/
 
