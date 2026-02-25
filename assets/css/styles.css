@@ -18,7 +18,7 @@
          -> Choose any color 
          -> Copy the color mode (HSL)
   */
-  --hue: 255;
+  --hue: 220;
   --first-color: hsl(var(--hue), 60%, 64%);
   --first-color-alt: hsl(var(--hue), 80%, 56%);
   --first-color-alt-2: hsl(var(--hue), 60%, 56%);
@@ -187,9 +187,30 @@ img {
 }
 
 /*=============== CUSTOM CURSOR ===============*/
-
+.cursor {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  background-color: var(--first-color-light);
+  border-radius: 50%;
+  box-shadow: 0 0 30px var(--first-color);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  transition:
+    transform 0.2s ease-out,
+    left 0.2s ease-out,
+    top 0.2s ease-out,
+    width 0.3s,
+    height 0.3s;
+}
 /* Hide the custom cursor */
-
+.hide-cursor {
+  width: 0;
+  height: 0;
+}
 /*=============== HEADER & NAV ===============*/
 .header {
   position: fixed;
@@ -247,7 +268,7 @@ img {
   text-shadow: 0 8px 16px var(--first-color);
 }
 /* Active link */
-.active-link{
+.active-link {
   color: var(--first-color);
   text-shadow: 0 8px 16px var(--first-color);
 }
@@ -1318,5 +1339,14 @@ img {
   }
 }
 /* For 2K resolutions (2048 x 1152, 2048 x 1536) */
-
+@media screen and (min-width: 2048px) {
+  body {
+    zoom: 1.4;
+  }
+}
 /* Custom cursor is hidden for mobile devices */
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}

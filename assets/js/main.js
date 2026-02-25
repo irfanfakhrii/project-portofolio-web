@@ -133,7 +133,47 @@ const scrollActive = () => {
 };
 window.addEventListener("scroll", scrollActive);
 /*=============== CUSTOM CURSOR ===============*/
+const cursor = document.querySelector(".cursor");
+let mouseX = 0,
+  mouseY = 0;
 
+const cursorMove = () => {
+  cursor.style.left = `${mouseX}px`;
+  cursor.style.top = `${mouseY}px`;
+  cursor.style.transform = "translate(-50%, -50%)";
+
+  requestAnimationFrame(cursorMove);
+};
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+cursorMove();
 /* Hide custom cursor on links */
+const a = document.querySelectorAll("a");
 
+a.forEach((item) => {
+  item.addEventListener("mouseover", () => {
+    cursor.classList.add("hide-cursor");
+  });
+  item.addEventListener("mouseleave", () => {
+    cursor.classList.remove("hide-cursor");
+  });
+});
 /*=============== SCROLL REVEAL ANIMATION ===============*/
+const sr = ScrollReveal({
+  origin: "top",
+  distance: "60px",
+  duration: 2000,
+  delay: 300,
+});
+
+sr.reveal(".home__image, .projects__container, .work__container");
+sr.reveal(".home__data", { delay: 900, origin: "bottom" });
+sr.reveal(".home__info", { delay: 1200, origin: "bottom" });
+sr.reveal(".home__social, .home__cv", { delay: 1500 });
+sr.reveal(".about__data", { origin: "left" });
+sr.reveal(".about__image", { origin: "right" });
+sr.reveal(".services__card", { interval: 100 });
