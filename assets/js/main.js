@@ -107,9 +107,31 @@ copyBtn.addEventListener("click", () => {
   });
 });
 /*=============== CURRENT YEAR OF THE FOOTER ===============*/
+const textYear = document.getElementById("footer-year");
+currentYear = new Date().getFullYear();
 
+textYear.textContent = currentYear;
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+const sections = document.querySelectorAll("section[id]");
 
+const scrollActive = () => {
+  const scrollY = window.scrollY;
+
+  sections.forEach((section) => {
+    const id = section.id,
+      top = section.offsetTop - 50,
+      height = section.offsetHeight,
+      link = document.querySelector(".nav__menu a[href*=" + id + "]");
+
+    if (!link) return;
+
+    link.classList.toggle(
+      "active-link",
+      scrollY > top && scrollY <= top + height,
+    );
+  });
+};
+window.addEventListener("scroll", scrollActive);
 /*=============== CUSTOM CURSOR ===============*/
 
 /* Hide custom cursor on links */
