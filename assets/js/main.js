@@ -41,8 +41,7 @@ const swiperProjects = new Swiper(".projects__swiper", {
 
 /*=============== WORK TABS ===============*/
 const tabs = document.querySelectorAll("[data-target]");
-const tabContents =
-  document.querySelectorAll("[data-content]"); /* ✅ fix: tambah const */
+const tabContents = document.querySelectorAll("[data-content]");
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
@@ -61,7 +60,6 @@ tabs.forEach((tab) => {
 const servicesButtons = document.querySelectorAll(".services__button");
 
 servicesButtons.forEach((button) => {
-  /* ✅ fix: set height awal hanya untuk card yang services-open */
   const parentCard = button.parentNode;
   if (parentCard.classList.contains("services-open")) {
     const info = parentCard.querySelector(".services__info");
@@ -86,68 +84,60 @@ servicesButtons.forEach((button) => {
   });
 });
 
-/*=============== CERTIFICATES SWIPER ===============*/
-const swiperCertificates = new Swiper(".certificates__swiper", {
-  loop: true,
-  spaceBetween: 24,
-  slidesPerView: "auto",
-  grabCursor: true,
-  speed: 500,
+/*=============== CERTIFICATE MODAL FUNCTIONS ===============*/
+function openCertModal(imgSrc, title) {
+  const modal = document.getElementById("cert-modal");
+  const modalImg = document.getElementById("modal-img-full");
+  const modalTitle = document.getElementById("modal-title-full");
 
-  pagination: {
-    el: ".certificates__pagination",
-    clickable: true,
-  },
+  modalImg.src = imgSrc;
+  modalTitle.textContent = title;
+  modal.style.display = "grid";
+  document.body.style.overflow = "hidden"; // Matikan scroll body
+}
 
-  autoplay: {
-    delay: 3500,
-    disableOnInteraction: false,
-  },
-});
+function closeCertModal() {
+  const modal = document.getElementById("cert-modal");
+  modal.style.display = "none";
+  document.body.style.overflow = "auto"; // Aktifkan scroll body
+}
 
-/*=============== CERTIFICATES MODAL ===============*/
-const certButtons = document.querySelectorAll(".certificates__button");
-const certModal = document.getElementById("cert-modal");
-const certModalClose = document.getElementById("cert-modal-close");
-const certModalImg = document.getElementById("cert-modal-img");
-const certModalTitle = document.getElementById("cert-modal-title");
-const certModalIssuer = document.getElementById("cert-modal-issuer");
-const certModalDate = document.getElementById("cert-modal-date");
-const certModalDesc = document.getElementById("cert-modal-desc");
-
-// Buka modal saat tombol "View Certificate" diklik
-certButtons.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation(); // cegah event bubble ke card
-
-    certModalImg.src = btn.dataset.img || "";
-    certModalImg.alt = btn.dataset.title;
-    certModalTitle.textContent = btn.dataset.title;
-    certModalIssuer.textContent = btn.dataset.issuer;
-    certModalDate.textContent = btn.dataset.date;
-    certModalDesc.textContent = btn.dataset.desc;
-
-    certModal.classList.add("active");
-    document.body.style.overflow = "hidden";
-  });
-});
-
-// Tutup modal
-certModalClose.addEventListener("click", closeModal);
-
-certModal.addEventListener("click", (e) => {
-  if (e.target === certModal) closeModal();
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && certModal.classList.contains("active")) {
-    closeModal();
+// Tutup modal jika klik di luar gambar
+window.onclick = function (event) {
+  const modal = document.getElementById("cert-modal");
+  if (event.target == modal) {
+    closeCertModal();
   }
-});
+};
 
-function closeModal() {
-  certModal.classList.remove("active");
-  document.body.style.overflow = "";
+/*=============== CERTIFICATES NAVIGATION LOGIC ===============*/
+/*=============== SMOOTH CERTIFICATES NAVIGATION ===============*/
+const certWrapper = document.getElementById("cert-wrapper"),
+  certPrev = document.getElementById("cert-prev"),
+  certNext = document.getElementById("cert-next");
+
+if (certWrapper && certPrev && certNext) {
+  // Fungsi untuk mendapatkan lebar satu kartu + gap secara dinamis
+  const getScrollStep = () => {
+    const card = certWrapper.querySelector(".certificates__card");
+    const style = window.getComputedStyle(certWrapper);
+    const gap = parseInt(style.columnGap) || 24; // Ambil nilai gap dari CSS
+    return card ? card.offsetWidth + gap : 284;
+  };
+
+  certNext.addEventListener("click", () => {
+    certWrapper.scrollBy({
+      left: getScrollStep(),
+      behavior: "smooth", // Ini kunci agar gesernya halus
+    });
+  });
+
+  certPrev.addEventListener("click", () => {
+    certWrapper.scrollBy({
+      left: -getScrollStep(),
+      behavior: "smooth",
+    });
+  });
 }
 
 /*=============== TESTIMONIALS DUPLICATE CARDS ===============*/
@@ -175,7 +165,7 @@ copyBtn.addEventListener("click", () => {
 
 /*=============== CURRENT YEAR IN FOOTER ===============*/
 const textYear = document.getElementById("footer-year");
-const currentYear = new Date().getFullYear(); /* ✅ fix: tambah const */
+const currentYear = new Date().getFullYear();
 textYear.textContent = currentYear;
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
@@ -201,6 +191,7 @@ const scrollActive = () => {
 window.addEventListener("scroll", scrollActive);
 
 /*=============== CUSTOM CURSOR ===============*/
+
 const cursor = document.querySelector(".cursor");
 let mouseX = 0,
   mouseY = 0;
@@ -219,16 +210,27 @@ document.addEventListener("mousemove", (e) => {
 
 cursorMove();
 
-const interactables = document.querySelectorAll("a, button");
+const handleCursorHover = () => {
+  const interactables = document.querySelectorAll(
+    "a, button, .swiper-pagination-bullet",
+  );
 
-interactables.forEach((item) => {
-  item.addEventListener("mouseover", () => {
-    cursor.classList.add("hide-cursor");
+  interactables.forEach((item) => {
+    item.removeEventListener("mouseenter", addHide);
+    item.removeEventListener("mouseleave", removeHide);
+
+    item.addEventListener("mouseenter", addHide);
+    item.addEventListener("mouseleave", removeHide);
   });
-  item.addEventListener("mouseleave", () => {
-    cursor.classList.remove("hide-cursor");
-  });
-});
+};
+
+const addHide = () => cursor.classList.add("hide-cursor");
+const removeHide = () => cursor.classList.remove("hide-cursor");
+
+handleCursorHover();
+
+swiperProjects.on("afterInit", handleCursorHover);
+swiperProjects.on("update", handleCursorHover);
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
 const sr = ScrollReveal({

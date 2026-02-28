@@ -7,7 +7,7 @@
     <!--=============== FAVICON ===============-->
     <link
       rel="shortcut icon"
-      href="assets/img/webicon.png"
+      href="assets/img/favicon.png"
       type="image/x-icon"
     />
 
@@ -510,172 +510,244 @@
         </div>
       </section>
 
-      <!--==================== CERTIFICATES ====================-->
       <section class="certificates section" id="certificates">
-        <h2 class="section__title">My <span>Certificates</span></h2>
+        <h2 class="section__title">Technical <span>Certifications</span></h2>
 
         <div class="certificates__container container">
-          <div class="swiper certificates__swiper">
-            <div class="swiper-wrapper">
-              <!-- CARD 1 - Copy bagian ini untuk tambah sertifikat baru -->
-              <article class="swiper-slide certificates__card">
+          <div class="certificates__nav">
+            <button class="certificates__nav-btn prev" id="cert-prev">
+              <i class="ri-arrow-left-s-line"></i>
+            </button>
+            <button class="certificates__nav-btn next" id="cert-next">
+              <i class="ri-arrow-right-s-line"></i>
+            </button>
+          </div>
+
+          <div class="certificates__wrapper" id="cert-wrapper">
+            <article class="certificates__card">
+              <header class="certificates__header">
+                <i class="ri-verified-badge-line certificates__icon"></i>
+                <span class="certificates__id">ID: G-4492</span>
+              </header>
+
+              <div class="certificates__content">
+                <h3 class="certificates__title">Google Data</h3>
+                <p class="certificates__issuer">Google Career Certificates</p>
+              </div>
+
+              <div
+                class="certificates__preview"
+                onclick="
+                  openCertModal(
+                    'assets/img/cert-1.png',
+                    'Google Data Analytics',
+                  )
+                "
+              >
                 <img
                   src="assets/img/cert-1.png"
-                  alt="certificate"
+                  alt="Sertifikat"
                   class="certificates__img"
                 />
-                <div class="certificates__data">
-                  <div class="certificates__header">
-                    <div class="certificates__icon">
-                      <i class="ri-award-fill"></i>
-                    </div>
-                    <span class="certificates__badge">Verified</span>
-                  </div>
-                  <h3 class="certificates__title">
-                    Data Engineering Fundamentals
-                  </h3>
-                  <span class="certificates__issuer">Dicoding Indonesia</span>
-                  <span class="certificates__date"
-                    ><i class="ri-calendar-line"></i> Januari 2024</span
-                  >
-                  <button
-                    class="certificates__button"
-                    data-img="assets/img/cert-1.png"
-                    data-title="Data Engineering Fundamentals"
-                    data-issuer="Dicoding Indonesia"
-                    data-date="Januari 2024"
-                    data-desc="Mempelajari dasar-dasar data engineering termasuk pipeline, ETL, dan pengelolaan data."
-                  >
-                    View Certificate <i class="ri-arrow-right-line"></i>
-                  </button>
+                <div class="certificates__overlay">
+                  <i class="ri-add-line"></i>
                 </div>
-              </article>
+              </div>
+            </article>
 
-              <!-- CARD 2 -->
-              <article class="swiper-slide certificates__card">
+            <article class="certificates__card">
+              <header class="certificates__header">
+                <i class="ri-verified-badge-line certificates__icon"></i>
+                <span class="certificates__id">ID: G-4492</span>
+              </header>
+
+              <div class="certificates__content">
+                <h3 class="certificates__title">oe Data Analytics</h3>
+                <p class="certificates__issuer">Google Career Certificates</p>
+              </div>
+
+              <div
+                class="certificates__preview"
+                onclick="
+                  openCertModal(
+                    'assets/img/cert-1.png',
+                    'Google Data Analytics',
+                  )
+                "
+              >
+                <img
+                  src="assets/img/cert-1.png"
+                  alt="Sertifikat"
+                  class="certificates__img"
+                />
+                <div class="certificates__overlay">
+                  <i class="ri-add-line"></i>
+                </div>
+              </div>
+            </article>
+
+            <article class="certificates__card">
+              <header class="certificates__header">
+                <i class="ri-verified-badge-line certificates__icon"></i>
+                <span class="certificates__id">ID: G-4492</span>
+              </header>
+
+              <div class="certificates__content">
+                <h3 class="certificates__title">G Analytics</h3>
+                <p class="certificates__issuer">Google Career Certificates</p>
+              </div>
+
+              <div
+                class="certificates__preview"
+                onclick="
+                  openCertModal(
+                    'assets/img/cert-1.png',
+                    'Google Data Analytics',
+                  )
+                "
+              >
+                <img
+                  src="assets/img/cert-1.png"
+                  alt="Sertifikat"
+                  class="certificates__img"
+                />
+                <div class="certificates__overlay">
+                  <i class="ri-add-line"></i>
+                </div>
+              </div>
+            </article>
+
+            <article class="certificates__card">
+              <header class="certificates__header">
+                <i class="ri-verified-badge-line certificates__icon"></i>
+                <span class="certificates__id">ID: G-4492</span>
+              </header>
+
+              <div class="certificates__content">
+                <h3 class="certificates__title">Googlewdalytics</h3>
+                <p class="certificates__issuer">Google Career Certificates</p>
+              </div>
+
+              <div
+                class="certificates__preview"
+                onclick="
+                  openCertModal(
+                    'assets/img/cert-1.png',
+                    'Google Data Analytics',
+                  )
+                "
+              >
+                <img
+                  src="assets/img/cert-1.png"
+                  alt="Sertifikat"
+                  class="certificates__img"
+                />
+                <div class="certificates__overlay">
+                  <i class="ri-add-line"></i>
+                </div>
+              </div>
+            </article>
+
+            <article class="certificates__card">
+              <header class="certificates__header">
+                <i class="ri-verified-badge-line certificates__icon"></i>
+                <span class="certificates__id">ID: G-4492</span>
+              </header>
+
+              <div class="certificates__content">
+                <h3 class="certificates__title">Googdwadacs</h3>
+                <p class="certificates__issuer">Google Career Certificates</p>
+              </div>
+
+              <div
+                class="certificates__preview"
+                onclick="
+                  openCertModal(
+                    'assets/img/cert-1.png',
+                    'Google Data Analytics',
+                  )
+                "
+              >
+                <img
+                  src="assets/img/cert-1.png"
+                  alt="Sertifikat"
+                  class="certificates__img"
+                />
+                <div class="certificates__overlay">
+                  <i class="ri-add-line"></i>
+                </div>
+              </div>
+            </article>
+
+            <article class="certificates__card">
+              <header class="certificates__header">
+                <i class="ri-verified-badge-line certificates__icon"></i>
+                <span class="certificates__id">ID: G-4492</span>
+              </header>
+
+              <div class="certificates__content">
+                <h3 class="certificates__title">Goics</h3>
+                <p class="certificates__issuer">Google Career Certificates</p>
+              </div>
+
+              <div
+                class="certificates__preview"
+                onclick="
+                  openCertModal(
+                    'assets/img/cert-1.png',
+                    'Google Data Analytics',
+                  )
+                "
+              >
+                <img
+                  src="assets/img/cert-1.png"
+                  alt="Sertifikat"
+                  class="certificates__img"
+                />
+                <div class="certificates__overlay">
+                  <i class="ri-add-line"></i>
+                </div>
+              </div>
+            </article>
+
+            <article class="certificates__card">
+              <header class="certificates__header">
+                <i class="ri-verified-badge-line certificates__icon"></i>
+                <span class="certificates__id">ID: AST-102</span>
+              </header>
+
+              <div class="certificates__content">
+                <h3 class="certificates__title">Airflow Expert</h3>
+                <p class="certificates__issuer">Astronomer.io</p>
+              </div>
+
+              <div
+                class="certificates__preview"
+                onclick="
+                  openCertModal('assets/img/cert-2.png', 'Airflow Expert')
+                "
+              >
                 <img
                   src="assets/img/cert-2.png"
-                  alt="certificate"
+                  alt="Sertifikat"
                   class="certificates__img"
                 />
-                <div class="certificates__data">
-                  <div class="certificates__header">
-                    <div class="certificates__icon">
-                      <i class="ri-award-fill"></i>
-                    </div>
-                    <span class="certificates__badge">Verified</span>
-                  </div>
-                  <h3 class="certificates__title">Python for Data Science</h3>
-                  <span class="certificates__issuer">Coursera</span>
-                  <span class="certificates__date"
-                    ><i class="ri-calendar-line"></i> Maret 2024</span
-                  >
-                  <button
-                    class="certificates__button"
-                    data-img="assets/img/cert-2.png"
-                    data-title="Python for Data Science"
-                    data-issuer="Coursera"
-                    data-date="Maret 2024"
-                    data-desc="Penguasaan Python untuk analisis data, visualisasi, dan machine learning dasar."
-                  >
-                    View Certificate <i class="ri-arrow-right-line"></i>
-                  </button>
+                <div class="certificates__overlay">
+                  <i class="ri-add-line"></i>
                 </div>
-              </article>
-
-              <!-- CARD 3 -->
-              <article class="swiper-slide certificates__card">
-                <img
-                  src="assets/img/cert-3.png"
-                  alt="certificate"
-                  class="certificates__img"
-                />
-                <div class="certificates__data">
-                  <div class="certificates__header">
-                    <div class="certificates__icon">
-                      <i class="ri-award-fill"></i>
-                    </div>
-                    <span class="certificates__badge">Verified</span>
-                  </div>
-                  <h3 class="certificates__title">UI/UX Design Essentials</h3>
-                  <span class="certificates__issuer">Google</span>
-                  <span class="certificates__date"
-                    ><i class="ri-calendar-line"></i> Juni 2024</span
-                  >
-                  <button
-                    class="certificates__button"
-                    data-img="assets/img/cert-3.png"
-                    data-title="UI/UX Design Essentials"
-                    data-issuer="Google"
-                    data-date="Juni 2024"
-                    data-desc="Memahami prinsip desain UI/UX, wireframing, prototyping menggunakan Figma."
-                  >
-                    View Certificate <i class="ri-arrow-right-line"></i>
-                  </button>
-                </div>
-              </article>
-
-              <!-- CARD 4 -->
-              <article class="swiper-slide certificates__card">
-                <img
-                  src="assets/img/cert-4.png"
-                  alt="certificate"
-                  class="certificates__img"
-                />
-                <div class="certificates__data">
-                  <div class="certificates__header">
-                    <div class="certificates__icon">
-                      <i class="ri-award-fill"></i>
-                    </div>
-                    <span class="certificates__badge">Verified</span>
-                  </div>
-                  <h3 class="certificates__title">SQL for Data Analysis</h3>
-                  <span class="certificates__issuer">Udemy</span>
-                  <span class="certificates__date"
-                    ><i class="ri-calendar-line"></i> Agustus 2024</span
-                  >
-                  <button
-                    class="certificates__button"
-                    data-img="assets/img/cert-4.png"
-                    data-title="SQL for Data Analysis"
-                    data-issuer="Udemy"
-                    data-date="Agustus 2024"
-                    data-desc="Penguasaan SQL untuk analisis data, query kompleks, dan optimasi database."
-                  >
-                    View Certificate <i class="ri-arrow-right-line"></i>
-                  </button>
-                </div>
-              </article>
-            </div>
-
-            <div class="swiper-pagination certificates__pagination"></div>
+              </div>
+            </article>
           </div>
         </div>
 
-        <!-- MODAL -->
-        <div class="certificates__modal" id="cert-modal">
-          <div class="certificates__modal-content">
-            <button class="certificates__modal-close" id="cert-modal-close">
-              <i class="ri-close-line"></i>
-            </button>
-            <img
-              src=""
-              alt=""
-              class="certificates__modal-img"
-              id="cert-modal-img"
-            />
-            <div class="certificates__modal-info">
-              <h3 class="certificates__modal-title" id="cert-modal-title"></h3>
-              <span
-                class="certificates__modal-issuer"
-                id="cert-modal-issuer"
-              ></span>
-              <span
-                class="certificates__modal-date"
-                id="cert-modal-date"
-              ></span>
-              <p class="certificates__modal-desc" id="cert-modal-desc"></p>
-            </div>
+        <div class="cert__modal" id="cert-modal">
+          <div class="cert__modal-content">
+            <i
+              class="ri-close-line cert__modal-close"
+              onclick="closeCertModal()"
+            ></i>
+            <img src="" id="modal-img-full" alt="Full Certificate" />
+            <h2 id="modal-title-full"></h2>
           </div>
         </div>
       </section>
