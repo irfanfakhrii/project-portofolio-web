@@ -86,6 +86,70 @@ servicesButtons.forEach((button) => {
   });
 });
 
+/*=============== CERTIFICATES SWIPER ===============*/
+const swiperCertificates = new Swiper(".certificates__swiper", {
+  loop: true,
+  spaceBetween: 24,
+  slidesPerView: "auto",
+  grabCursor: true,
+  speed: 500,
+
+  pagination: {
+    el: ".certificates__pagination",
+    clickable: true,
+  },
+
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: false,
+  },
+});
+
+/*=============== CERTIFICATES MODAL ===============*/
+const certButtons = document.querySelectorAll(".certificates__button");
+const certModal = document.getElementById("cert-modal");
+const certModalClose = document.getElementById("cert-modal-close");
+const certModalImg = document.getElementById("cert-modal-img");
+const certModalTitle = document.getElementById("cert-modal-title");
+const certModalIssuer = document.getElementById("cert-modal-issuer");
+const certModalDate = document.getElementById("cert-modal-date");
+const certModalDesc = document.getElementById("cert-modal-desc");
+
+// Buka modal saat tombol "View Certificate" diklik
+certButtons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation(); // cegah event bubble ke card
+
+    certModalImg.src = btn.dataset.img || "";
+    certModalImg.alt = btn.dataset.title;
+    certModalTitle.textContent = btn.dataset.title;
+    certModalIssuer.textContent = btn.dataset.issuer;
+    certModalDate.textContent = btn.dataset.date;
+    certModalDesc.textContent = btn.dataset.desc;
+
+    certModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+// Tutup modal
+certModalClose.addEventListener("click", closeModal);
+
+certModal.addEventListener("click", (e) => {
+  if (e.target === certModal) closeModal();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && certModal.classList.contains("active")) {
+    closeModal();
+  }
+});
+
+function closeModal() {
+  certModal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
 /*=============== TESTIMONIALS DUPLICATE CARDS ===============*/
 const tracks = document.querySelectorAll(".testimonials__content");
 
@@ -155,7 +219,6 @@ document.addEventListener("mousemove", (e) => {
 
 cursorMove();
 
-/* ✅ Hide custom cursor on links AND buttons */
 const interactables = document.querySelectorAll("a, button");
 
 interactables.forEach((item) => {
