@@ -22,6 +22,8 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- dark mode light mode -->
+    <link rel="stylesheet" href="assets/css/theme.css" />
 
     <title>Portofolio Irfan Fakhriyanto</title>
   </head>
@@ -45,6 +47,12 @@
 
             <li>
               <a href="#contact" class="nav__link">Contact</a>
+            </li>
+
+            <li>
+              <button class="theme__toggle" id="theme-toggle">
+                <i class="ri-moon-line" id="theme-icon"></i>
+              </button>
             </li>
           </ul>
         </div>
@@ -71,7 +79,7 @@
           <div class="home__image">
             <div class="blob-animate"></div>
             <img
-              src="assets/img/home-perfil.png"
+              src="assets/img/profile.PNG"
               alt="image"
               class="home__perfil"
             />
@@ -457,8 +465,8 @@
                 <li class="services__skill">MongoDB</li>
                 <li class="services__skill">MySQL</li>
                 <li class="services__skill">Google Query</li>
-                <li class="services__skill">Cloud Computing</li>
-                <li class="services__skill">Azure</li>
+                <li class="services__skill">Cloud</li>
+                <li class="services__skill">Cloud Comptuing</li>
               </ul>
             </div>
 
@@ -804,7 +812,7 @@
               <div class="contact__links">
                 <a
                   href="https://www.linkedin.com/in/irfan-fakhriyanto-b2996a281/"
-                  target="_blanks"
+                  target="_blank"
                   class="contact__link"
                 >
                   Linkedin<i class="ri-arrow-right-up-long-line"></i>
@@ -812,7 +820,7 @@
 
                 <a
                   href="https://github.com/irfanfakhrii"
-                  target="_blanks"
+                  target="_blank"
                   class="contact__link"
                 >
                   GitHub<i class="ri-arrow-right-up-long-line"></i>
@@ -844,15 +852,13 @@
 
     <!--==================== FOOTER ====================-->
     <footer class="footer grid">
-    <div class="blob-animate"></div>
+      <div class="blob-animate"></div>
 
-    <div class="footer__copy">
-      All Rights Reserved by <span>irfanfakhrii</span>
-    </div>
+      <div class="footer__copy">
+        All Rights Reserved by <span>irfanfakhrii</span>
+      </div>
 
-    <div class="footer__year">
-      &#169; <span id="footer-year"></span>
-    </div>
+      <div class="footer__year">&#169; <span id="footer-year"></span></div>
     </footer>
     <!--=============== SCROLLREVEAL ===============-->
     <script src="assets/js/scrollreveal.min.js"></script>
@@ -865,5 +871,7 @@
 
     <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
+    <!-- tema dark white -->
+    <script src="assets/js/theme.js"></script>
   </body>
 </html>

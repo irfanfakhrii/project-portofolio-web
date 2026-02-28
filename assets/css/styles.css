@@ -786,7 +786,7 @@ img {
 /* Hide services info */
 .services-close .services__info {
   height: 0;
-  opacity: o;
+  opacity: 0;
   overflow: hidden;
 }
 
@@ -794,6 +794,15 @@ img {
   transition:
     height 0.4s,
     opacity 0.4s;
+}
+.services__card {
+  position: relative;
+  padding: 2rem 1.5rem 3.5rem 1.5rem; /* ✅ tambah padding-bottom lebih besar */
+}
+
+.services__button {
+  right: 1.5rem;
+  bottom: 1.5rem;
 }
 /* Rotate icon */
 .services-open .services__button i {
@@ -1074,7 +1083,6 @@ img {
   .container {
     margin-inline: auto;
   }
-
   .section {
     padding-block: 7rem 2rem;
   }
@@ -1101,11 +1109,11 @@ img {
 
   .home__container {
     width: initial;
-    padding-top: 3rem;
+    padding-top: 0;
   }
 
   .home__perfil {
-    width: 600px;
+    width: 545px;
   }
   .home__image .blob-animate {
     width: 450px;
@@ -1213,7 +1221,7 @@ img {
   .projects__swiper {
     padding-bottom: 4rem;
   }
-  .projects_container {
+  .projects__container {
     max-width: 1380px;
   }
   .projects__card {
@@ -1257,7 +1265,7 @@ img {
     column-gap: 5rem;
   }
   .services__card {
-    padding: 3rem 3rem 4rem 3rem;
+    padding: 3rem 3rem 4.5rem 3rem;
     border-radius: 4rem;
     row-gap: 2rem;
   }
@@ -1265,13 +1273,10 @@ img {
     font-size: var(--h1-font-size);
     margin-bottom: 1rem;
   }
-  .services-close .services__button {
-    right: 2rem;
-    bottom: 2rem;
-  }
+  .services-close .services__button,
   .services-open .services__button {
     right: 2rem;
-    bottom: 1.3rem;
+    bottom: 2rem; /* ✅ samakan keduanya */
   }
   .testimonials__container {
     row-gap: 3rem;
@@ -1338,6 +1343,7 @@ img {
     font-size: 1.25rem;
   }
 }
+
 /* For 2K resolutions (2048 x 1152, 2048 x 1536) */
 @media screen and (min-width: 2048px) {
   body {

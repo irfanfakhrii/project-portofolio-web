@@ -1,0 +1,107 @@
+/* =============== THEME TOGGLE BUTTON =============== */
+.theme__toggle {
+  background: none;
+  color: var(--title-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition:
+    color 0.4s,
+    transform 0.4s;
+  display: flex;
+  align-items: center;
+}
+
+.theme__toggle:hover {
+  color: var(--first-color);
+  transform: rotate(20deg);
+}
+
+/* =============== LIGHT MODE VARIABLES =============== */
+body.light-theme {
+  --title-color: hsl(240, 8%, 10%);
+  --text-color: hsl(240, 8%, 35%);
+  --text-color-light: hsl(240, 8%, 55%);
+  --body-color: hsl(240, 100%, 98%);
+  --container-color: hsl(240, 8%, 92%);
+}
+
+/* Scrollbar light mode */
+body.light-theme ::-webkit-scrollbar {
+  background-color: hsl(240, 6%, 85%);
+}
+
+body.light-theme ::-webkit-scrollbar-thumb {
+  background-color: hsl(240, 6%, 70%);
+}
+
+body.light-theme ::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(240, 6%, 60%);
+}
+
+/* Header light mode */
+body.light-theme .header {
+  background: linear-gradient(
+    180deg,
+    var(--body-color) 60%,
+    hsla(240, 100%, 98%, 0) 100%
+  );
+}
+
+/* Home shadow light mode */
+body.light-theme .home__shadow {
+  background: linear-gradient(
+    180deg,
+    hsla(240, 100%, 98%, 0) 60%,
+    hsl(240, 100%, 98%) 85%
+  );
+}
+
+/* About shadow light mode */
+body.light-theme .about__shadow {
+  background: linear-gradient(
+    180deg,
+    hsla(240, 100%, 98%, 0) 60%,
+    var(--body-color) 95%
+  );
+}
+
+/* Testimonials fade light mode */
+body.light-theme .testimonials__container::after {
+  background: linear-gradient(
+    90deg,
+    var(--body-color) 0%,
+    hsla(240, 100%, 98%, 0) 100%
+  );
+}
+
+body.light-theme .testimonials__container::before {
+  background: linear-gradient(
+    90deg,
+    hsla(240, 100%, 98%, 0) 0%,
+    var(--body-color) 100%
+  );
+}
+
+/* Projects fade light mode */
+body.light-theme .projects__container::before {
+  background: linear-gradient(
+    90deg,
+    var(--body-color) 0%,
+    hsla(240, 100%, 98%, 0) 100%
+  );
+}
+
+body.light-theme .projects__container::after {
+  background: linear-gradient(
+    90deg,
+    hsla(240, 100%, 98%, 0) 0%,
+    var(--body-color) 100%
+  );
+}
+
+/* Services skill badge light mode */
+body.light-theme .services__skill {
+  background-color: var(--container-color);
+  border-color: var(--text-color);
+  color: var(--title-color);
+}

@@ -38,43 +38,45 @@ const swiperProjects = new Swiper(".projects__swiper", {
     disableOnInteraction: false,
   },
 });
+
 /*=============== WORK TABS ===============*/
 const tabs = document.querySelectorAll("[data-target]");
-tabContents = document.querySelectorAll("[data-content]");
+const tabContents =
+  document.querySelectorAll("[data-content]"); /* ✅ fix: tambah const */
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     const targetSelector = tab.dataset.target,
       targetContent = document.querySelector(targetSelector);
 
-    // disable all content and active tabs
     tabContents.forEach((content) => content.classList.remove("work-active"));
     tabs.forEach((t) => t.classList.remove("work-active"));
 
-    // active the tab and corresponding content
     tab.classList.add("work-active");
     targetContent.classList.add("work-active");
   });
 });
 
 /*=============== SERVICES ACCORDION ===============*/
-const servicesButtons = document.querySelectorAll(" .services__button");
+const servicesButtons = document.querySelectorAll(".services__button");
 
 servicesButtons.forEach((button) => {
-  const heightInfo = document.querySelector(" .services__info");
-  heightInfo.style.height = heightInfo.scrollHeight + "px";
+  /* ✅ fix: set height awal hanya untuk card yang services-open */
+  const parentCard = button.parentNode;
+  if (parentCard.classList.contains("services-open")) {
+    const info = parentCard.querySelector(".services__info");
+    info.style.height = info.scrollHeight + "px";
+  }
 
   button.addEventListener("click", () => {
-    const servicesCards = document.querySelectorAll(" .services__card"),
+    const servicesCards = document.querySelectorAll(".services__card"),
       currentCard = button.parentNode,
-      currentInfo = currentCard.querySelector(" .services__info"),
+      currentInfo = currentCard.querySelector(".services__info"),
       isCardOpen = currentCard.classList.contains("services-open");
 
     servicesCards.forEach((card) => {
       card.classList.replace("services-open", "services-close");
-
-      const info = card.querySelector(" .services__info");
-      info.style.height = "0";
+      card.querySelector(".services__info").style.height = "0";
     });
 
     if (!isCardOpen) {
@@ -83,16 +85,17 @@ servicesButtons.forEach((button) => {
     }
   });
 });
-/*=============== TESTIMONIALS OF DUPLICATE CARDS ===============*/
+
+/*=============== TESTIMONIALS DUPLICATE CARDS ===============*/
 const tracks = document.querySelectorAll(".testimonials__content");
 
 tracks.forEach((track) => {
   const cards = [...track.children];
-
   for (const card of cards) {
     track.appendChild(card.cloneNode(true));
   }
 });
+
 /*=============== COPY EMAIL IN CONTACT ===============*/
 const copyBtn = document.getElementById("contact-btn"),
   copyEmail = document.getElementById("contact-email").textContent;
@@ -100,17 +103,17 @@ const copyBtn = document.getElementById("contact-btn"),
 copyBtn.addEventListener("click", () => {
   navigator.clipboard.writeText(copyEmail).then(() => {
     copyBtn.innerHTML = 'Email Copied <i class="ri-check-line"></i>';
-
     setTimeout(() => {
       copyBtn.innerHTML = 'Copy email <i class="ri-file-copy-line"></i>';
     }, 2000);
   });
 });
-/*=============== CURRENT YEAR OF THE FOOTER ===============*/
-const textYear = document.getElementById("footer-year");
-currentYear = new Date().getFullYear();
 
+/*=============== CURRENT YEAR IN FOOTER ===============*/
+const textYear = document.getElementById("footer-year");
+const currentYear = new Date().getFullYear(); /* ✅ fix: tambah const */
 textYear.textContent = currentYear;
+
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll("section[id]");
 
@@ -132,6 +135,7 @@ const scrollActive = () => {
   });
 };
 window.addEventListener("scroll", scrollActive);
+
 /*=============== CUSTOM CURSOR ===============*/
 const cursor = document.querySelector(".cursor");
 let mouseX = 0,
@@ -141,7 +145,6 @@ const cursorMove = () => {
   cursor.style.left = `${mouseX}px`;
   cursor.style.top = `${mouseY}px`;
   cursor.style.transform = "translate(-50%, -50%)";
-
   requestAnimationFrame(cursorMove);
 };
 
@@ -151,10 +154,11 @@ document.addEventListener("mousemove", (e) => {
 });
 
 cursorMove();
-/* Hide custom cursor on links */
-const a = document.querySelectorAll("a");
 
-a.forEach((item) => {
+/* ✅ Hide custom cursor on links AND buttons */
+const interactables = document.querySelectorAll("a, button");
+
+interactables.forEach((item) => {
   item.addEventListener("mouseover", () => {
     cursor.classList.add("hide-cursor");
   });
@@ -162,6 +166,7 @@ a.forEach((item) => {
     cursor.classList.remove("hide-cursor");
   });
 });
+
 /*=============== SCROLL REVEAL ANIMATION ===============*/
 const sr = ScrollReveal({
   origin: "top",
